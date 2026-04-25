@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
+import { isLocalAuthenticated } from '../lib/localAuth';
 
 const AUTH_TIMEOUT_MS = 8000;
 
@@ -11,9 +12,8 @@ export default function ProtectedRoute() {
     let isMounted = true;
 
     const checkAuth = async () => {
-      // If Supabase isn't configured (common in preview/demo deploys), don't block the app.
       if (!isSupabaseConfigured) {
-        setIsAuthenticated(true);
+        setIsAuthenticated(isLocalAuthenticated());
         return;
       }
 
@@ -43,11 +43,13 @@ export default function ProtectedRoute() {
       if (timeoutId !== undefined) window.clearTimeout(timeoutId);
     });
 
-    const { data: authListener } = supabase.auth.onAuthStateChange(() => {
-      // Reset to loading briefly so navigations don't show stale state.
-      setIsAuthenticated(null);
-      checkAuth();
-    });
+    const { data: authListener } = isSupabaseConfigured
+      ? supabase.auth.onAuthStateChange(() => {
+          // Reset to loading briefly so navigations don't show stale state.
+          setIsAuthenticated(null);
+          checkAuth();
+        })
+      : { data: { subscription: { unsubscribe: () => undefined } } };
 
     return () => {
       isMounted = false;

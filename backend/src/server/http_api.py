@@ -270,6 +270,10 @@ def create_app() -> Starlette:
         for origin in (env.cors_allowed_origin or "").split(",")
         if origin.strip()
     ]
+    if "http://localhost:5173" in allowed_origins and "http://127.0.0.1:5173" not in allowed_origins:
+        allowed_origins.append("http://127.0.0.1:5173")
+    if "http://127.0.0.1:5173" in allowed_origins and "http://localhost:5173" not in allowed_origins:
+        allowed_origins.append("http://localhost:5173")
 
     app.add_middleware(
         CORSMiddleware,

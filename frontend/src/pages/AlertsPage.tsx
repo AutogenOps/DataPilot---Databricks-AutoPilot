@@ -18,11 +18,11 @@ export default function AlertsPage() {
   const getAlertStyle = (severity: string) => {
     switch (severity) {
       case 'critical':
-        return 'bg-[rgba(239,68,68,0.05)] border-status-error';
+        return 'bg-[rgba(255,107,107,0.06)] border-status-error';
       case 'warning':
-        return 'bg-[rgba(245,158,11,0.05)] border-status-warning';
+        return 'bg-[rgba(242,184,75,0.06)] border-status-warning';
       default:
-        return 'bg-[rgba(0,212,255,0.05)] border-accent-cyan';
+        return 'bg-[rgba(255,184,107,0.06)] border-accent-cyan';
     }
   };
 
@@ -42,7 +42,7 @@ export default function AlertsPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg"
+            className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-mono text-text-muted">CRITICAL</span>
@@ -57,7 +57,7 @@ export default function AlertsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg"
+            className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-mono text-text-muted">WARNINGS</span>
@@ -72,7 +72,7 @@ export default function AlertsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg"
+            className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-mono text-text-muted">INFO</span>
@@ -85,8 +85,8 @@ export default function AlertsPage() {
         </div>
 
         <div className="grid grid-cols-2 gap-6">
-          <div className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg">
-            <div className="p-6 border-b border-[rgba(0,180,216,0.15)]">
+          <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg">
+            <div className="p-6 border-b border-[rgba(255,255,255,0.10)]">
               <h2 className="text-lg font-display font-bold text-text-primary">
                 Alert Feed
               </h2>
@@ -126,7 +126,7 @@ export default function AlertsPage() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center gap-2 px-3 py-1.5 bg-bg-primary hover:bg-[rgba(0,212,255,0.1)] text-accent-cyan rounded text-xs font-medium transition-colors"
+                      className="flex items-center gap-2 px-3 py-1.5 bg-bg-primary hover:bg-[rgba(255,184,107,0.10)] text-accent-cyan rounded text-xs font-medium transition-colors"
                     >
                       <Check className="w-3 h-3" />
                       Acknowledge
@@ -137,8 +137,8 @@ export default function AlertsPage() {
             </div>
           </div>
 
-          <div className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg">
-            <div className="p-6 border-b border-[rgba(0,180,216,0.15)]">
+          <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg">
+            <div className="p-6 border-b border-[rgba(255,255,255,0.10)]">
               <h2 className="text-lg font-display font-bold text-text-primary">
                 SLA Compliance
               </h2>

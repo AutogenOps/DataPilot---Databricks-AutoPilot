@@ -133,7 +133,7 @@ export default function SignUpPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="backdrop-blur-xl bg-bg-surface/30 border border-[rgba(0,180,216,0.2)] rounded-2xl p-8"
+          className="backdrop-blur-xl bg-bg-surface/30 border border-[rgba(255,255,255,0.14)] rounded-2xl p-8"
         >
           <motion.div
             initial={{ opacity: 0 }}
@@ -168,7 +168,7 @@ export default function SignUpPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Alex Johnson"
-                  className="w-full pl-10 pr-4 py-3 bg-bg-primary border border-[rgba(0,180,216,0.2)] rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-bg-primary border border-[rgba(255,255,255,0.14)] rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all"
                   required
                 />
               </div>
@@ -189,7 +189,7 @@ export default function SignUpPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
-                  className="w-full pl-10 pr-4 py-3 bg-bg-primary border border-[rgba(0,180,216,0.2)] rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-bg-primary border border-[rgba(255,255,255,0.14)] rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all"
                   required
                 />
               </div>
@@ -210,7 +210,7 @@ export default function SignUpPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-10 py-3 bg-bg-primary border border-[rgba(0,180,216,0.2)] rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all"
+                  className="w-full pl-10 pr-10 py-3 bg-bg-primary border border-[rgba(255,255,255,0.14)] rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan/30 transition-all"
                   required
                 />
                 <button
@@ -230,7 +230,7 @@ export default function SignUpPage() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-2 p-3 bg-bg-primary rounded-lg border border-[rgba(0,180,216,0.1)] space-y-1.5"
+                  className="mt-2 p-3 bg-bg-primary rounded-lg border border-[rgba(255,255,255,0.08)] space-y-1.5"
                 >
                   <p className="text-xs text-text-muted mb-2 font-mono">
                     Password strength
@@ -263,7 +263,7 @@ export default function SignUpPage() {
                       ? passwordsMatch
                         ? 'border-status-success focus:border-status-success focus:ring-status-success/30'
                         : 'border-status-error focus:border-status-error focus:ring-status-error/30'
-                      : 'border-[rgba(0,180,216,0.2)] focus:border-accent-cyan focus:ring-accent-cyan/30'
+                      : 'border-[rgba(255,255,255,0.14)] focus:border-accent-cyan focus:ring-accent-cyan/30'
                   }`}
                   required
                 />
@@ -285,7 +285,7 @@ export default function SignUpPage() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="p-3 bg-[rgba(239,68,68,0.1)] border border-status-error rounded-lg"
+                className="p-3 bg-[rgba(255,107,107,0.10)] border border-status-error rounded-lg"
               >
                 <p className="text-xs font-mono text-status-error">{error}</p>
               </motion.div>
@@ -299,7 +299,7 @@ export default function SignUpPage() {
               <label className="flex items-start gap-2 cursor-pointer group">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 mt-0.5 bg-bg-primary border border-[rgba(0,180,216,0.2)] rounded checked:bg-accent-cyan cursor-pointer"
+                  className="w-4 h-4 mt-0.5 bg-bg-primary border border-[rgba(255,255,255,0.14)] rounded checked:bg-accent-cyan cursor-pointer"
                   required
                 />
                 <span className="text-xs text-text-secondary group-hover:text-text-primary transition-colors">

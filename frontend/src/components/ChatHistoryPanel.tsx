@@ -55,8 +55,8 @@ export default function ChatHistoryPanel({
           className={clsx(
             'w-full flex items-center gap-2',
             'px-3 py-2 rounded-xl',
-            'bg-bg-primary border border-[rgba(0,180,216,0.15)]',
-            'hover:border-accent-cyan hover:bg-[rgba(0,212,255,0.06)]',
+            'bg-bg-primary border border-[rgba(255,255,255,0.10)]',
+            'hover:border-accent-cyan hover:bg-[rgba(255,184,107,0.07)]',
             'transition-colors',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan/60'
           )}
@@ -69,7 +69,7 @@ export default function ChatHistoryPanel({
           className={clsx(
             'flex items-center gap-2',
             'px-3 py-2 rounded-xl',
-            'bg-bg-primary border border-[rgba(0,180,216,0.15)]',
+            'bg-bg-primary border border-[rgba(255,255,255,0.10)]',
             'focus-within:border-accent-cyan transition-colors'
           )}
         >
@@ -111,8 +111,8 @@ export default function ChatHistoryPanel({
                   'rounded-xl border',
                   'transition-colors',
                   isActive
-                    ? 'border-accent-cyan bg-[rgba(0,212,255,0.08)]'
-                    : 'border-[rgba(0,180,216,0.15)] bg-bg-primary hover:border-accent-cyan hover:bg-[rgba(0,212,255,0.06)]'
+                    ? 'border-accent-cyan bg-[rgba(255,184,107,0.09)]'
+                    : 'border-[rgba(255,255,255,0.10)] bg-bg-primary hover:border-accent-cyan hover:bg-[rgba(255,184,107,0.07)]'
                 )}
               >
                 <button
@@ -148,7 +148,7 @@ export default function ChatHistoryPanel({
                     aria-label="Share conversation"
                     className={clsx(
                       'p-2 rounded-lg',
-                      'text-text-muted hover:text-accent-cyan hover:bg-[rgba(0,212,255,0.08)]',
+                      'text-text-muted hover:text-accent-cyan hover:bg-[rgba(255,184,107,0.09)]',
                       'transition-all',
                       'opacity-0 translate-x-1 pointer-events-none',
                       'group-hover:opacity-100 group-hover:translate-x-0 group-hover:pointer-events-auto',
@@ -167,7 +167,7 @@ export default function ChatHistoryPanel({
                     aria-label="Delete conversation"
                     className={clsx(
                       'p-2 rounded-lg',
-                      'text-text-muted hover:text-status-error hover:bg-[rgba(239,68,68,0.12)]',
+                      'text-text-muted hover:text-status-error hover:bg-[rgba(255,107,107,0.12)]',
                       'transition-all',
                       'opacity-0 translate-x-1 pointer-events-none',
                       'group-hover:opacity-100 group-hover:translate-x-0 group-hover:pointer-events-auto',

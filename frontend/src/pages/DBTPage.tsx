@@ -9,7 +9,7 @@ export default function DBTPage() {
 
   return (
     <div className="h-full flex">
-      <div className="w-80 bg-bg-surface border-r border-[rgba(0,180,216,0.15)] overflow-y-auto scrollbar-thin">
+      <div className="w-80 bg-bg-surface border-r border-[rgba(255,255,255,0.10)] overflow-y-auto scrollbar-thin">
         <div className="p-6">
           <h2 className="text-lg font-display font-bold text-text-primary mb-4">
             dbt Models
@@ -22,8 +22,8 @@ export default function DBTPage() {
                 whileHover={{ x: 4 }}
                 className={`w-full text-left p-4 rounded-lg border transition-all ${
                   selectedModel?.id === model.id
-                    ? 'bg-[rgba(0,212,255,0.1)] border-accent-cyan'
-                    : 'bg-bg-primary border-[rgba(0,180,216,0.15)] hover:border-accent-cyan'
+                    ? 'bg-[rgba(255,184,107,0.10)] border-accent-cyan'
+                    : 'bg-bg-primary border-[rgba(255,255,255,0.10)] hover:border-accent-cyan'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -49,7 +49,7 @@ export default function DBTPage() {
       </div>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="p-6 bg-bg-surface border-b border-[rgba(0,180,216,0.15)]">
+        <div className="p-6 bg-bg-surface border-b border-[rgba(255,255,255,0.10)]">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-display font-bold text-text-primary mb-1">
@@ -87,7 +87,7 @@ export default function DBTPage() {
 
         <div className="flex-1 overflow-y-auto scrollbar-thin p-6">
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg p-6">
+            <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-6">
               <h3 className="text-sm font-display font-bold text-text-primary mb-4">
                 MODEL SQL
               </h3>
@@ -105,7 +105,7 @@ WHERE is_active = true`}
               </div>
             </div>
 
-            <div className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg p-6">
+            <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-6">
               <h3 className="text-sm font-display font-bold text-text-primary mb-4">
                 TEST RESULTS
               </h3>
@@ -115,8 +115,8 @@ WHERE is_active = true`}
                     key={test.id}
                     className={`p-4 rounded-lg border ${
                       test.status === 'pass'
-                        ? 'bg-[rgba(16,245,160,0.05)] border-status-success'
-                        : 'bg-[rgba(239,68,68,0.05)] border-status-error'
+                        ? 'bg-[rgba(126,231,135,0.06)] border-status-success'
+                        : 'bg-[rgba(255,107,107,0.06)] border-status-error'
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -150,7 +150,7 @@ WHERE is_active = true`}
               </div>
             </div>
 
-            <div className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg p-6">
+            <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-6">
               <h3 className="text-sm font-display font-bold text-text-primary mb-4">
                 DEPENDENCIES
               </h3>
@@ -158,7 +158,7 @@ WHERE is_active = true`}
                 {selectedModel.dependencies.map((dep) => (
                   <div
                     key={dep}
-                    className="px-3 py-1.5 bg-bg-primary border border-[rgba(0,180,216,0.15)] rounded-lg"
+                    className="px-3 py-1.5 bg-bg-primary border border-[rgba(255,255,255,0.10)] rounded-lg"
                   >
                     <span className="text-xs font-mono text-accent-cyan">{dep}</span>
                   </div>
@@ -168,7 +168,7 @@ WHERE is_active = true`}
           </div>
         </div>
 
-        <div className="border-t border-[rgba(0,180,216,0.15)] p-6 bg-bg-surface">
+        <div className="border-t border-[rgba(255,255,255,0.10)] p-6 bg-bg-surface">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-between">
               <div>

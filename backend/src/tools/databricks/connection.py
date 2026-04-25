@@ -1,6 +1,10 @@
-from databricks.sdk import WorkspaceClient
+import requests
 
 from src.clients.databricks_client import get_databricks_config
+
+
+def _timeout_seconds(timeout_ms: int) -> float:
+    return max(1.0, timeout_ms / 1000.0)
 
 
 def validate_databricks_connection_config() -> dict:
@@ -26,13 +30,19 @@ def ping_databricks_api() -> dict:
     try:
         config = get_databricks_config()
 
-        client = WorkspaceClient(host=config.host, token=config.token)
-        me = client.current_user.me()
+        response = requests.get(
+            f"{config.host}/api/2.0/preview/scim/v2/Me",
+            headers={"Authorization": f"Bearer {config.token}"},
+            timeout=_timeout_seconds(config.timeout_ms),
+        )
+        response.raise_for_status()
+        me = response.json()
+
         return {
             "ok": True,
-            "host": config.host,
-            "userName": getattr(me, "user_name", None),
-            "displayName": getattr(me, "display_name", None),
+            "workspaceConfigured": True,
+            "userName": me.get("userName"),
+            "displayName": me.get("displayName"),
             "message": "Databricks API reachable.",
         }
     except ValueError as exc:
@@ -41,6 +51,22 @@ def ping_databricks_api() -> dict:
             "errorType": type(exc).__name__,
             "error": str(exc),
             "message": "Databricks credentials are missing or invalid. Set DATABRICKS_HOST and DATABRICKS_TOKEN.",
+        }
+    except requests.Timeout as exc:
+        return {
+            "ok": False,
+            "errorType": type(exc).__name__,
+            "error": str(exc),
+            "message": "Timed out reaching Databricks. Check network access and workspace host.",
+        }
+    except requests.HTTPError as exc:
+        status_code = exc.response.status_code if exc.response is not None else None
+        return {
+            "ok": False,
+            "errorType": type(exc).__name__,
+            "error": str(exc),
+            "statusCode": status_code,
+            "message": "Databricks rejected the request. Check token validity and workspace permissions.",
         }
     except Exception as exc:  # pragma: no cover
         return {

@@ -40,13 +40,13 @@ const PipelineNode = ({ data }: { data: PipelineNodeData }) => {
   const getNodeStyle = () => {
     switch (data.type) {
       case 'bronze':
-        return 'border-status-warning bg-[rgba(245,158,11,0.1)]';
+        return 'border-status-warning bg-[rgba(242,184,75,0.10)]';
       case 'silver':
-        return 'border-accent-azure bg-[rgba(0,120,212,0.1)]';
+        return 'border-accent-azure bg-[rgba(232,111,45,0.10)]';
       case 'gold':
         return 'border-[#FFD700] bg-[rgba(255,215,0,0.1)]';
       default:
-        return 'border-accent-cyan bg-[rgba(0,212,255,0.1)]';
+        return 'border-accent-cyan bg-[rgba(255,184,107,0.10)]';
     }
   };
 
@@ -264,10 +264,10 @@ export default function PipelinesPage() {
           target: table.id,
           type: 'smoothstep',
           animated: table.status === 'RUNNING',
-          style: { stroke: '#00D4FF', strokeWidth: 2 },
+          style: { stroke: '#FFB86B', strokeWidth: 2 },
           markerEnd: {
             type: MarkerType.ArrowClosed,
-            color: '#00D4FF',
+            color: '#FFB86B',
           },
         });
       });
@@ -292,7 +292,7 @@ export default function PipelinesPage() {
 
   return (
     <div className="h-full flex">
-      <div className="w-80 bg-bg-surface border-r border-[rgba(0,180,216,0.15)] overflow-y-auto scrollbar-thin">
+      <div className="w-80 bg-bg-surface border-r border-[rgba(255,255,255,0.10)] overflow-y-auto scrollbar-thin">
         <div className="p-6">
           <h2 className="text-lg font-display font-bold text-text-primary mb-4">
             Pipelines
@@ -311,8 +311,8 @@ export default function PipelinesPage() {
                 whileHover={{ x: 4 }}
                 className={`w-full text-left p-4 rounded-lg border transition-all ${
                   selectedPipeline?.id === pipeline.id
-                    ? 'bg-[rgba(0,212,255,0.1)] border-accent-cyan'
-                    : 'bg-bg-primary border-[rgba(0,180,216,0.15)] hover:border-accent-cyan'
+                    ? 'bg-[rgba(255,184,107,0.10)] border-accent-cyan'
+                    : 'bg-bg-primary border-[rgba(255,255,255,0.10)] hover:border-accent-cyan'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -341,7 +341,7 @@ export default function PipelinesPage() {
       <div className="flex-1 flex flex-col">
         {selectedPipeline ? (
           <>
-            <div className="p-6 bg-bg-surface border-b border-[rgba(0,180,216,0.15)]">
+            <div className="p-6 bg-bg-surface border-b border-[rgba(255,255,255,0.10)]">
               <div className="flex items-center justify-between">
                 <div>
                   <h1 className="text-2xl font-display font-bold text-text-primary mb-1">
@@ -392,14 +392,14 @@ export default function PipelinesPage() {
                     type="button"
                     onClick={() => load()}
                     disabled={loading}
-                    className="p-2 bg-bg-primary hover:bg-[rgba(0,212,255,0.1)] text-text-secondary rounded-lg transition-colors"
+                    className="p-2 bg-bg-primary hover:bg-[rgba(255,184,107,0.10)] text-text-secondary rounded-lg transition-colors"
                   >
                     <RefreshCw className="w-5 h-5" />
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 bg-bg-primary hover:bg-[rgba(0,212,255,0.1)] text-text-secondary rounded-lg transition-colors"
+                    className="p-2 bg-bg-primary hover:bg-[rgba(255,184,107,0.10)] text-text-secondary rounded-lg transition-colors"
                   >
                     <Maximize2 className="w-5 h-5" />
                   </motion.button>
@@ -422,16 +422,16 @@ export default function PipelinesPage() {
                   variant={BackgroundVariant.Dots}
                   gap={24}
                   size={1}
-                  color="rgba(0,180,216,0.15)"
+                  color="rgba(255,255,255,0.10)"
                 />
                 <Controls
-                  className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg"
+                  className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
                 />
               </ReactFlow>
 
               {selectedPipeline.tables.length === 0 && (
                 <div className="absolute inset-0 flex items-center justify-center p-6 pointer-events-none">
-                  <div className="max-w-md w-full bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg p-5">
+                  <div className="max-w-md w-full bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-5">
                     <div className="text-sm font-mono text-text-primary font-medium mb-1">
                       No pipeline graph to display
                     </div>
@@ -443,15 +443,15 @@ export default function PipelinesPage() {
                 </div>
               )}
 
-              <div className="absolute bottom-6 right-6 p-4 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg">
+              <div className="absolute bottom-6 right-6 p-4 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg">
                 <div className="text-xs font-mono text-text-muted mb-2">LEGEND</div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-sm border-2 border-status-warning bg-[rgba(245,158,11,0.1)]" />
+                    <div className="w-3 h-3 rounded-sm border-2 border-status-warning bg-[rgba(242,184,75,0.10)]" />
                     <span className="text-xs text-text-secondary">Bronze</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-sm border-2 border-accent-azure bg-[rgba(0,120,212,0.1)]" />
+                    <div className="w-3 h-3 rounded-sm border-2 border-accent-azure bg-[rgba(232,111,45,0.10)]" />
                     <span className="text-xs text-text-secondary">Silver</span>
                   </div>
                   <div className="flex items-center gap-2">

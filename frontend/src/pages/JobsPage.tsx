@@ -172,7 +172,7 @@ export default function JobsPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg"
+            className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-mono text-text-muted">TOTAL JOBS</span>
@@ -191,7 +191,7 @@ export default function JobsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg glow-green"
+            className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg glow-green"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-mono text-text-muted">RUNNING</span>
@@ -210,7 +210,7 @@ export default function JobsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg glow-red"
+            className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg glow-red"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-mono text-text-muted">FAILED</span>
@@ -229,7 +229,7 @@ export default function JobsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg"
+            className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
           >
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-mono text-text-muted">SUCCEEDED</span>
@@ -245,8 +245,8 @@ export default function JobsPage() {
           </motion.div>
         </div>
 
-        <div className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg overflow-hidden">
-          <div className="p-6 border-b border-[rgba(0,180,216,0.15)]">
+        <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg overflow-hidden">
+          <div className="p-6 border-b border-[rgba(255,255,255,0.10)]">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-display font-bold text-text-primary">
                 All Jobs
@@ -274,7 +274,7 @@ export default function JobsPage() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-[rgba(0,180,216,0.15)]">
+                <tr className="border-b border-[rgba(255,255,255,0.10)]">
                   <th className="text-left p-4 text-xs font-mono text-text-muted">
                     JOB NAME
                   </th>
@@ -302,7 +302,7 @@ export default function JobsPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="border-b border-[rgba(0,180,216,0.1)] hover:bg-[rgba(0,212,255,0.05)] cursor-pointer group"
+                    className="border-b border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,184,107,0.06)] cursor-pointer group"
                   >
                     <td className="p-4">
                       <div className="flex items-center gap-2">
@@ -363,7 +363,7 @@ export default function JobsPage() {
                           whileTap={{ scale: 0.95 }}
                           type="button"
                           onClick={() => view(job.id)}
-                          className="px-3 py-1 bg-bg-primary hover:bg-[rgba(0,212,255,0.1)] text-text-secondary rounded text-xs font-medium transition-colors"
+                          className="px-3 py-1 bg-bg-primary hover:bg-[rgba(255,184,107,0.10)] text-text-secondary rounded text-xs font-medium transition-colors"
                         >
                           View
                         </motion.button>

@@ -192,7 +192,7 @@ export default function ClustersPage() {
             type="button"
             onClick={() => load()}
             disabled={loading}
-            className="flex items-center gap-2 px-4 py-2 bg-bg-surface border border-[rgba(0,180,216,0.15)] hover:border-accent-cyan rounded-lg text-sm text-text-secondary hover:text-accent-cyan transition-colors disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-bg-surface border border-[rgba(255,255,255,0.10)] hover:border-accent-cyan rounded-lg text-sm text-text-secondary hover:text-accent-cyan transition-colors disabled:opacity-50"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
             Refresh
@@ -200,7 +200,7 @@ export default function ClustersPage() {
         </div>
 
         {error && (
-          <div className="mb-6 p-3 bg-[rgba(239,68,68,0.1)] border border-status-error rounded-lg flex items-start gap-2">
+          <div className="mb-6 p-3 bg-[rgba(255,107,107,0.10)] border border-status-error rounded-lg flex items-start gap-2">
             <AlertTriangle className="w-4 h-4 text-status-error mt-0.5" />
             <div>
               <div className="text-xs font-mono text-status-error">{error}</div>
@@ -219,8 +219,8 @@ export default function ClustersPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              whileHover={{ y: -4, boxShadow: '0 8px 30px rgba(0,212,255,0.2)' }}
-              className="p-6 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg cursor-pointer transition-all"
+              whileHover={{ y: -4, boxShadow: '0 8px 30px rgba(255,184,107,0.18)' }}
+              className="p-6 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg cursor-pointer transition-all"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -297,7 +297,7 @@ export default function ClustersPage() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-bg-primary hover:bg-[rgba(0,212,255,0.1)] text-text-secondary rounded-lg text-sm font-medium transition-colors"
+                      className="px-4 py-2 bg-bg-primary hover:bg-[rgba(255,184,107,0.10)] text-text-secondary rounded-lg text-sm font-medium transition-colors"
                     >
                       <Terminal className="w-4 h-4" />
                     </motion.button>
@@ -326,7 +326,7 @@ export default function ClustersPage() {
           </div>
         )}
 
-        <div className="bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg p-6">
+        <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-6">
           <h2 className="text-lg font-display font-bold text-text-primary mb-4">
             Resource Utilization
           </h2>

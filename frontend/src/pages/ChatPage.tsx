@@ -421,7 +421,7 @@ export default function ChatPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                     onClick={() => handlePromptClick(prompt.text)}
-                    className="p-4 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg text-left hover:border-accent-cyan hover:glow-cyan transition-all group"
+                    className="p-4 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg text-left hover:border-accent-cyan hover:glow-cyan transition-all group"
                   >
                     <prompt.icon className={`w-5 h-5 text-${prompt.color} mb-2 group-hover:text-accent-cyan transition-colors`} />
                     <p className="text-sm text-text-primary">{prompt.text}</p>
@@ -444,7 +444,7 @@ export default function ChatPage() {
                     className={`max-w-[80%] p-4 rounded-lg ${
                       message.role === 'user'
                         ? 'bg-bg-surface border-l-2 border-accent-cyan'
-                        : 'bg-[rgba(0,212,255,0.05)] border border-[rgba(0,180,216,0.15)]'
+                        : 'bg-[rgba(255,184,107,0.06)] border border-[rgba(255,255,255,0.10)]'
                     }`}
                   >
                     <p className="text-sm text-text-primary whitespace-pre-wrap">
@@ -463,7 +463,7 @@ export default function ChatPage() {
                   animate={{ opacity: 1 }}
                   className="flex justify-start"
                 >
-                  <div className="max-w-[80%] p-4 rounded-lg bg-[rgba(0,212,255,0.05)] border border-[rgba(0,180,216,0.15)]">
+                  <div className="max-w-[80%] p-4 rounded-lg bg-[rgba(255,184,107,0.06)] border border-[rgba(255,255,255,0.10)]">
                     <div className="flex items-center gap-2">
                       <motion.div
                         className="flex gap-1"
@@ -488,11 +488,11 @@ export default function ChatPage() {
             <div
               className={clsx(
                 'flex items-center gap-3',
-                'bg-bg-primary border border-[rgba(0,180,216,0.22)]',
+                'bg-bg-primary border border-[rgba(255,255,255,0.16)]',
                 'rounded-full px-4 py-2.5 min-h-[52px]',
                 'shadow-[0_10px_26px_rgba(0,0,0,0.28)]',
                 'transition-colors',
-                'focus-within:border-accent-cyan focus-within:shadow-[0_0_0_1px_rgba(0,212,255,0.25),0_10px_26px_rgba(0,0,0,0.28)]'
+                'focus-within:border-accent-cyan focus-within:shadow-[0_0_0_1px_rgba(255,184,107,0.18),0_10px_26px_rgba(0,0,0,0.28)]'
               )}
             >
               <textarea
@@ -544,7 +544,7 @@ export default function ChatPage() {
 
       <aside
         className={clsx(
-          'bg-bg-surface border-l border-[rgba(0,180,216,0.15)] overflow-hidden',
+          'bg-bg-surface border-l border-[rgba(255,255,255,0.10)] overflow-hidden',
           isContextPanelCollapsed ? 'w-16' : 'w-80',
           'transition-[width] duration-200 ease-in-out'
         )}

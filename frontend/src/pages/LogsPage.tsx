@@ -86,7 +86,7 @@ export default function LogsPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-2 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg">
+            <div className="flex items-center gap-2 px-3 py-2 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg">
               <span className="text-xs font-mono text-text-muted">AUTO</span>
               <button
                 type="button"
@@ -104,12 +104,12 @@ export default function LogsPage() {
               </button>
             </div>
 
-            <div className="flex items-center gap-2 px-3 py-2 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg">
+            <div className="flex items-center gap-2 px-3 py-2 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg">
               <span className="text-xs font-mono text-text-muted">LIMIT</span>
               <select
                 value={limit}
                 onChange={(e) => setLimit(parseInt(e.target.value, 10))}
-                className="bg-bg-primary border border-[rgba(0,180,216,0.2)] rounded-md px-2 py-1 text-xs font-mono text-text-primary focus:outline-none focus:border-accent-cyan"
+                className="bg-bg-primary border border-[rgba(255,255,255,0.14)] rounded-md px-2 py-1 text-xs font-mono text-text-primary focus:outline-none focus:border-accent-cyan"
               >
                 <option value={100}>100</option>
                 <option value={200}>200</option>
@@ -124,7 +124,7 @@ export default function LogsPage() {
               type="button"
               onClick={load}
               disabled={loading}
-              className="flex items-center gap-2 px-4 py-2 bg-bg-surface border border-[rgba(0,180,216,0.15)] hover:border-accent-cyan rounded-lg text-sm text-text-secondary hover:text-accent-cyan transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 bg-bg-surface border border-[rgba(255,255,255,0.10)] hover:border-accent-cyan rounded-lg text-sm text-text-secondary hover:text-accent-cyan transition-colors disabled:opacity-50"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
               Refresh
@@ -138,7 +138,7 @@ export default function LogsPage() {
         </div>
 
         {error && (
-          <div className="mt-4 p-3 bg-[rgba(239,68,68,0.1)] border border-status-error rounded-lg flex items-start gap-2">
+          <div className="mt-4 p-3 bg-[rgba(255,107,107,0.10)] border border-status-error rounded-lg flex items-start gap-2">
             <AlertTriangle className="w-4 h-4 text-status-error mt-0.5" />
             <div>
               <div className="text-xs font-mono text-status-error">{error}</div>
@@ -151,7 +151,7 @@ export default function LogsPage() {
       </div>
 
       <div className="flex-1 px-8 pb-8 overflow-hidden">
-        <div className="h-full bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg overflow-hidden">
+        <div className="h-full bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg overflow-hidden">
           <div className="h-full overflow-auto scrollbar-thin p-4 font-mono text-xs">
             {entries.length === 0 ? (
               <div className="text-text-muted text-center py-10">

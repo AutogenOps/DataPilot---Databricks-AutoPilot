@@ -56,7 +56,7 @@ export default function Sidebar({
             'flex items-center py-2.5 rounded-lg cursor-pointer transition-all',
             collapsed ? 'justify-center px-3' : 'gap-3 px-4',
             isActive
-              ? 'bg-[rgba(0,212,255,0.1)] border-l-2 border-accent-cyan text-accent-cyan'
+              ? 'bg-[rgba(255,184,107,0.10)] border-l-2 border-accent-cyan text-accent-cyan'
               : clsx(
                   'text-text-secondary hover:text-text-primary hover:bg-bg-surface',
                   !collapsed && 'hover:translate-x-1'
@@ -85,7 +85,7 @@ export default function Sidebar({
   return (
     <aside
       className={clsx(
-        'bg-bg-surface border-r border-[rgba(0,180,216,0.15)] flex flex-col h-full overflow-hidden',
+        'bg-bg-surface border-r border-[rgba(255,255,255,0.10)] flex flex-col h-full overflow-hidden',
         collapsed ? 'w-16' : 'w-[260px]',
         'transition-[width] duration-200 ease-in-out'
       )}
@@ -102,7 +102,7 @@ export default function Sidebar({
           ))}
         </div>
 
-        <div className="pt-6 border-t border-[rgba(0,180,216,0.1)]">
+        <div className="pt-6 border-t border-[rgba(255,255,255,0.08)]">
           {!collapsed && (
             <div className="px-4 mb-3">
               <span className="text-xs font-display text-text-muted tracking-wider">
@@ -116,7 +116,7 @@ export default function Sidebar({
         </div>
       </div>
 
-      <div className="p-4 border-t border-[rgba(0,180,216,0.1)]">
+      <div className="p-4 border-t border-[rgba(255,255,255,0.08)]">
         <div
           className={clsx(
             'flex items-center px-3 py-2 bg-bg-primary rounded-lg',
@@ -130,8 +130,8 @@ export default function Sidebar({
             )}
             animate={{
               boxShadow: isDatabricksConnected
-                ? ['0 0 0 0 rgba(16,245,160,0.7)', '0 0 0 6px rgba(16,245,160,0)']
-                : ['0 0 0 0 rgba(239,68,68,0.7)', '0 0 0 6px rgba(239,68,68,0)'],
+                ? ['0 0 0 0 rgba(126,231,135,0.55)', '0 0 0 6px rgba(126,231,135,0)']
+                : ['0 0 0 0 rgba(255,107,107,0.55)', '0 0 0 6px rgba(255,107,107,0)'],
             }}
             transition={{ duration: 2, repeat: Infinity }}
           />

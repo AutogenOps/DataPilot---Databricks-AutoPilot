@@ -37,13 +37,13 @@ export default function StatusDot({ status, size = 'md', showLabel = false, anim
   const getGlowColor = () => {
     const normalizedStatus = status.toUpperCase();
     if (normalizedStatus === 'RUNNING' || normalizedStatus === 'SUCCEEDED') {
-      return ['0 0 0 0 rgba(16,245,160,0.7)', '0 0 0 8px rgba(16,245,160,0)'];
+      return ['0 0 0 0 rgba(126,231,135,0.55)', '0 0 0 8px rgba(126,231,135,0)'];
     }
     if (normalizedStatus === 'FAILED' || normalizedStatus === 'ERROR') {
-      return ['0 0 0 0 rgba(239,68,68,0.7)', '0 0 0 8px rgba(239,68,68,0)'];
+      return ['0 0 0 0 rgba(255,107,107,0.55)', '0 0 0 8px rgba(255,107,107,0)'];
     }
     if (normalizedStatus === 'PENDING' || normalizedStatus === 'RESTARTING') {
-      return ['0 0 0 0 rgba(245,158,11,0.7)', '0 0 0 8px rgba(245,158,11,0)'];
+      return ['0 0 0 0 rgba(242,184,75,0.55)', '0 0 0 8px rgba(242,184,75,0)'];
     }
     return ['0 0 0 0 rgba(139,146,160,0.7)', '0 0 0 8px rgba(139,146,160,0)'];
   };

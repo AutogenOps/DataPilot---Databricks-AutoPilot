@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import type { User } from '@supabase/supabase-js';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
+import { setLocalAuthenticated } from '../lib/localAuth';
 import DataPilotMark from './DataPilotMark';
 
 interface TopNavProps {
@@ -77,7 +78,7 @@ export default function TopNav({
 
   const userInitials = useMemo(() => {
     const base = (userName || userEmail || '').trim();
-    if (!base) return '??';
+    if (!base) return 'DP';
     const parts = base.split(/\s+/).filter(Boolean);
     if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
     return base.slice(0, 2).toUpperCase();
@@ -85,12 +86,16 @@ export default function TopNav({
 
   const handleSignOut = async () => {
     setShowUserMenu(false);
-    await supabase.auth.signOut();
+    if (isSupabaseConfigured) {
+      await supabase.auth.signOut();
+    } else {
+      setLocalAuthenticated(false);
+    }
     navigate('/signin');
   };
 
   return (
-    <nav className="h-16 bg-bg-surface border-b border-[rgba(0,180,216,0.15)] flex items-center justify-between px-6">
+    <nav className="h-16 bg-bg-surface border-b border-[rgba(255,255,255,0.10)] flex items-center justify-between px-6">
       <div className="flex items-center gap-6">
         <button
           type="button"
@@ -115,7 +120,7 @@ export default function TopNav({
           </h1>
         </motion.div>
 
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-bg-primary rounded-md border border-[rgba(0,180,216,0.15)] cursor-pointer hover:border-accent-cyan transition-colors">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-bg-primary rounded-md border border-[rgba(255,255,255,0.10)] cursor-pointer hover:border-accent-cyan transition-colors">
           <span className="font-mono text-sm text-text-secondary">{workspace}</span>
           <ChevronDown className="w-4 h-4 text-text-muted" />
         </div>
@@ -133,8 +138,8 @@ export default function TopNav({
             }`}
             animate={{
               boxShadow: isConnected
-                ? ['0 0 0 0 rgba(16,245,160,0.7)', '0 0 0 8px rgba(16,245,160,0)']
-                : ['0 0 0 0 rgba(239,68,68,0.7)', '0 0 0 8px rgba(239,68,68,0)'],
+                ? ['0 0 0 0 rgba(126,231,135,0.55)', '0 0 0 8px rgba(126,231,135,0)']
+                : ['0 0 0 0 rgba(255,107,107,0.55)', '0 0 0 8px rgba(255,107,107,0)'],
             }}
             transition={{ duration: 2, repeat: Infinity }}
           />
@@ -152,7 +157,7 @@ export default function TopNav({
         <div className="relative">
           <motion.button
             onClick={() => setShowUserMenu(!showUserMenu)}
-            className="flex items-center gap-2 px-3 py-1.5 bg-bg-primary rounded-lg border border-[rgba(0,180,216,0.15)] cursor-pointer hover:border-accent-cyan transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 bg-bg-primary rounded-lg border border-[rgba(255,255,255,0.10)] cursor-pointer hover:border-accent-cyan transition-colors"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -160,7 +165,7 @@ export default function TopNav({
               {userInitials}
             </div>
             <span className="text-sm text-text-primary">
-              {isAuthLoading ? 'Loading…' : userName || 'Account'}
+              {isAuthLoading ? 'Loading...' : userName || 'Local session'}
             </span>
             <ChevronDown
               className={`w-4 h-4 transition-transform ${
@@ -174,20 +179,20 @@ export default function TopNav({
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="absolute right-0 mt-2 w-48 bg-bg-surface border border-[rgba(0,180,216,0.15)] rounded-lg shadow-xl overflow-hidden z-50"
+              className="absolute right-0 mt-2 w-48 bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg shadow-xl overflow-hidden z-50"
             >
-              <div className="px-4 py-3 border-b border-[rgba(0,180,216,0.15)]">
+              <div className="px-4 py-3 border-b border-[rgba(255,255,255,0.10)]">
                 <p className="text-sm text-text-primary font-medium">
-                  {isAuthLoading ? 'Loading…' : userName || 'Not signed in'}
+                  {isAuthLoading ? 'Loading...' : userName || 'Local session'}
                 </p>
                 <p className="text-xs text-text-muted">
                   {isAuthLoading ? '' : userEmail}
                 </p>
               </div>
-              {authUser && (
+              {(authUser || !isSupabaseConfigured) && (
                 <button
                   onClick={handleSignOut}
-                  className="w-full flex items-center gap-2 px-4 py-3 text-sm text-text-secondary hover:text-status-error hover:bg-[rgba(239,68,68,0.1)] transition-colors"
+                  className="w-full flex items-center gap-2 px-4 py-3 text-sm text-text-secondary hover:text-status-error hover:bg-[rgba(255,107,107,0.10)] transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                   Sign Out

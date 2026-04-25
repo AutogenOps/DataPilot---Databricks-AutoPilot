@@ -5,28 +5,28 @@ export default {
     extend: {
       colors: {
         bg: {
-          primary: '#080C14',
-          surface: '#0D1B2A',
+          primary: '#010101',
+          surface: '#080808',
         },
         accent: {
-          cyan: '#00D4FF',
-          azure: '#0078D4',
+          cyan: '#FFB86B',
+          azure: '#E86F2D',
         },
         status: {
-          success: '#10F5A0',
-          warning: '#F59E0B',
-          error: '#EF4444',
+          success: '#7EE787',
+          warning: '#F2B84B',
+          error: '#FF6B6B',
         },
         text: {
-          primary: '#E4E7EB',
-          secondary: '#8B92A0',
-          muted: '#4B5563',
+          primary: '#F4F1EA',
+          secondary: '#A9A39A',
+          muted: '#6E675F',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
-        display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
+        display: ['Inter Tight', 'Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
