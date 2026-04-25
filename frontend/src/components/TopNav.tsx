@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import type { User } from '@supabase/supabase-js';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
-import datapilotLogoUrl from '../assets/DataPilot_icon.png';
+import DataPilotMark from './DataPilotMark';
 
 interface TopNavProps {
   workspace: string;
@@ -109,11 +109,7 @@ export default function TopNav({
           className="flex items-center gap-2 scan-line"
           whileHover={{ scale: 1.02 }}
         >
-          <img
-            src={datapilotLogoUrl}
-            alt="DataPilot"
-            className="w-6 h-6 object-contain drop-shadow-[0_0_10px_rgba(0,212,255,0.20)]"
-          />
+          <DataPilotMark className="h-6 w-6 rounded-md" />
           <h1 className="text-xl font-display font-bold text-gradient-cyan">
             DataPilot
           </h1>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import datapilotLogoUrl from '../assets/DataPilot_icon.png';
+import DataPilotMark from '../components/DataPilotMark';
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
@@ -87,11 +87,7 @@ export default function SignInPage() {
             className="text-center mb-8"
           >
             <div className="flex items-center justify-center gap-2 mb-4">
-              <img
-                src={datapilotLogoUrl}
-                alt="DataPilot"
-                className="w-8 h-8 object-contain drop-shadow-[0_0_14px_rgba(0,212,255,0.22)]"
-              />
+              <DataPilotMark className="h-8 w-8" />
               <h1 className="text-3xl font-display font-bold text-gradient-cyan">
                 DataPilot
               </h1>

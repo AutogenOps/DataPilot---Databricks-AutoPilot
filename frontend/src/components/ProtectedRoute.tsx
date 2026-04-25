@@ -9,7 +9,6 @@ export default function ProtectedRoute() {
 
   useEffect(() => {
     let isMounted = true;
-    let timeoutId: number | undefined;
 
     const checkAuth = async () => {
       // If Supabase isn't configured (common in preview/demo deploys), don't block the app.
@@ -34,7 +33,7 @@ export default function ProtectedRoute() {
       }
     };
 
-    timeoutId = window.setTimeout(() => {
+    const timeoutId = window.setTimeout(() => {
       if (!isMounted) return;
       // Never leave the app stuck on a blank loading screen.
       setIsAuthenticated(false);
@@ -52,7 +51,7 @@ export default function ProtectedRoute() {
 
     return () => {
       isMounted = false;
-      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      window.clearTimeout(timeoutId);
       authListener.subscription.unsubscribe();
     };
   }, []);

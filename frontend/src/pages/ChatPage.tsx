@@ -28,7 +28,7 @@ import {
   updateSupabaseConversationTitle,
 } from '../lib/chatHistory';
 import { supabase } from '../lib/supabase';
-import datapilotIconUrl from '../assets/DataPilot_icon.png';
+import DataPilotMark from '../components/DataPilotMark';
 
 const suggestedPrompts = [
   { icon: Activity, text: 'What jobs failed in the last 24 hours?', color: 'status-error' },
@@ -404,15 +404,7 @@ export default function ChatPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center mb-12"
               >
-                <img
-                  src={datapilotIconUrl}
-                  alt="DataPilot"
-                  className={clsx(
-                    'w-14 h-14 mx-auto mb-4 object-contain',
-                    'drop-shadow-[0_0_14px_rgba(0,212,255,0.22)]',
-                    'brightness-110'
-                  )}
-                />
+                <DataPilotMark className="mx-auto mb-4 h-14 w-14" />
                 <h2 className="text-3xl font-display font-bold text-gradient-cyan mb-2">
                   Welcome to DataPilot
                 </h2>

@@ -12,7 +12,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Play, Square, RefreshCw, Maximize2 } from 'lucide-react';
-import { Pipeline } from '../types';
+import { JobStatus, Pipeline } from '../types';
 import StatusDot from '../components/StatusDot';
 import { getApiBaseUrl } from '../lib/clientSettings';
 
@@ -30,7 +30,13 @@ type PipelineActionResponse = {
   updateId?: string | null;
 };
 
-const PipelineNode = ({ data }: { data: { label: string; type: string; status: string } }) => {
+type PipelineNodeData = {
+  label: string;
+  type: 'bronze' | 'silver' | 'gold';
+  status: JobStatus;
+};
+
+const PipelineNode = ({ data }: { data: PipelineNodeData }) => {
   const getNodeStyle = () => {
     switch (data.type) {
       case 'bronze':
@@ -57,7 +63,7 @@ const PipelineNode = ({ data }: { data: { label: string; type: string; status: s
       className={`px-4 py-3 rounded-lg border-2 ${getNodeStyle()} ${getGlow()} min-w-[180px]`}
     >
       <div className="flex items-center justify-between mb-2">
-        <StatusDot status={data.status as any} size="sm" />
+        <StatusDot status={data.status} size="sm" />
         <span className="text-xs font-mono text-text-muted uppercase">{data.type}</span>
       </div>
       <div className="text-sm font-mono text-text-primary font-medium">{data.label}</div>
@@ -135,11 +141,9 @@ export default function PipelinesPage() {
     // Poll for up to ~40 seconds (10 * 4s).
     const maxAttempts = 10;
     for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
-      // eslint-disable-next-line no-await-in-loop
       await new Promise((r) => setTimeout(r, 4000));
 
       try {
-        // eslint-disable-next-line no-await-in-loop
         const data = await fetchPipelines();
         if (!data.ok) continue;
 

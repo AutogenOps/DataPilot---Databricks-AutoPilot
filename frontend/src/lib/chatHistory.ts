@@ -9,6 +9,10 @@ type DbMessageRow = {
   created_at: string;
 };
 
+type DbMessageWithConversationRow = DbMessageRow & {
+  conversation_id: string;
+};
+
 type DbConversationRow = {
   id: string;
   title: string | null;
@@ -41,9 +45,8 @@ function mapConversation(row: DbConversationRow, messages: DbMessageRow[]): Chat
 }
 
 const DEBUG =
-  (import.meta as any).env?.DEV === true ||
-  ((import.meta as any).env?.VITE_DEBUG_CHAT_HISTORY?.toString?.() || '').toLowerCase() ===
-    'true';
+  import.meta.env.DEV === true ||
+  (import.meta.env.VITE_DEBUG_CHAT_HISTORY?.toString() || '').toLowerCase() === 'true';
 
 export const isChatHistorySupabaseEnabled = isSupabaseConfigured;
 
@@ -95,15 +98,15 @@ export async function fetchSupabaseConversations(): Promise<ChatConversation[]> 
 
   const grouped = new Map<string, DbMessageRow[]>();
   for (const id of ids) grouped.set(id, []);
-  for (const m of ((msgRows as any[]) ?? [])) {
-    const convId = m.conversation_id as string;
+  for (const m of ((msgRows as DbMessageWithConversationRow[] | null) ?? [])) {
+    const convId = m.conversation_id;
     const list = grouped.get(convId);
     if (!list) continue;
     list.push({
-      id: m.id as string,
-      role: m.role as 'user' | 'assistant',
-      content: m.content as string,
-      created_at: m.created_at as string,
+      id: m.id,
+      role: m.role,
+      content: m.content,
+      created_at: m.created_at,
     });
   }
 
