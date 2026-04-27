@@ -8,8 +8,8 @@ export default function DBTPage() {
   const [environment, setEnvironment] = useState<'dev' | 'staging' | 'production'>('dev');
 
   return (
-    <div className="h-full flex">
-      <div className="w-80 bg-bg-surface border-r border-[rgba(255,255,255,0.10)] overflow-y-auto scrollbar-thin">
+    <div className="h-full min-h-screen flex bg-bg-primary overflow-hidden">
+      <div className="w-80 min-h-screen bg-bg-surface border-r border-[rgba(255,255,255,0.10)] overflow-y-auto scrollbar-thin">
         <div className="p-6">
           <h2 className="text-lg font-display font-bold text-text-primary mb-4">
             dbt Models
@@ -48,7 +48,7 @@ export default function DBTPage() {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
         <div className="p-6 bg-bg-surface border-b border-[rgba(255,255,255,0.10)]">
           <div className="flex items-center justify-between">
             <div>
@@ -86,7 +86,7 @@ export default function DBTPage() {
         </div>
 
         <div className="flex-1 overflow-y-auto scrollbar-thin p-6">
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="space-y-6">
             <div className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-6">
               <h3 className="text-sm font-display font-bold text-text-primary mb-4">
                 MODEL SQL

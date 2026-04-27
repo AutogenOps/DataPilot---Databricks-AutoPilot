@@ -43,27 +43,28 @@ export default function SignInPage() {
     setLoading(true);
 
     try {
-      if (!isSupabaseConfigured) {
-        if (!email.trim() || password.length < 6) {
-          setError('Enter an email and a password with at least 6 characters.');
+      // First try Supabase if configured
+      if (isSupabaseConfigured) {
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (!signInError) {
+          navigate('/');
           return;
         }
+        // If Supabase fails, fall back to local auth with specific credentials
+      }
 
-        setLocalAuthenticated(true);
-        navigate('/');
+      // Local authentication with specific credentials
+      if (email.trim() !== 'arushverma767@gmail.com' || password !== 'Arush@1098') {
+        setError('Invalid email or password. Please use the authorized credentials.');
         return;
       }
 
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (signInError) {
-        setError(signInError.message);
-      } else {
-        navigate('/');
-      }
+      setLocalAuthenticated(true);
+      navigate('/');
     } catch {
       setError('An unexpected error occurred');
     } finally {

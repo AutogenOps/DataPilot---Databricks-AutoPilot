@@ -291,8 +291,8 @@ export default function PipelinesPage() {
   }, [selectedPipeline?.id]);
 
   return (
-    <div className="h-full flex">
-      <div className="w-80 bg-bg-surface border-r border-[rgba(255,255,255,0.10)] overflow-y-auto scrollbar-thin">
+    <div className="h-full min-h-screen flex bg-bg-primary overflow-hidden">
+      <div className="w-80 min-h-screen bg-bg-surface border-r border-[rgba(255,255,255,0.10)] overflow-y-auto scrollbar-thin">
         <div className="p-6">
           <h2 className="text-lg font-display font-bold text-text-primary mb-4">
             Pipelines
@@ -338,7 +338,7 @@ export default function PipelinesPage() {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
         {selectedPipeline ? (
           <>
             <div className="p-6 bg-bg-surface border-b border-[rgba(255,255,255,0.10)]">
@@ -407,37 +407,37 @@ export default function PipelinesPage() {
               </div>
             </div>
 
-            <div className="flex-1 bg-bg-primary relative">
-              <ReactFlow
-                nodes={nodes}
-                edges={edges}
-                onNodesChange={onNodesChange}
-                onEdgesChange={onEdgesChange}
-                nodeTypes={nodeTypes}
-                fitView
-                className="bg-bg-primary"
-                proOptions={{ hideAttribution: true }}
-              >
-                <Background
-                  variant={BackgroundVariant.Dots}
-                  gap={24}
-                  size={1}
-                  color="rgba(255,255,255,0.10)"
-                />
-                <Controls
-                  className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
-                />
-              </ReactFlow>
-
-              {selectedPipeline.tables.length === 0 && (
-                <div className="absolute inset-0 flex items-center justify-center p-6 pointer-events-none">
-                  <div className="max-w-md w-full bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-5">
-                    <div className="text-sm font-mono text-text-primary font-medium mb-1">
-                      No pipeline graph to display
+            <div className="flex-1 min-h-0 bg-bg-primary relative">
+              {selectedPipeline.tables.length > 0 ? (
+                <ReactFlow
+                  nodes={nodes}
+                  edges={edges}
+                  onNodesChange={onNodesChange}
+                  onEdgesChange={onEdgesChange}
+                  nodeTypes={nodeTypes}
+                  fitView
+                  className="bg-bg-primary h-full w-full"
+                  proOptions={{ hideAttribution: true }}
+                >
+                  <Background
+                    variant={BackgroundVariant.Dots}
+                    gap={24}
+                    size={1}
+                    color="rgba(255,255,255,0.10)"
+                  />
+                  <Controls
+                    className="bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg"
+                  />
+                </ReactFlow>
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center p-6">
+                  <div className="max-w-xl w-full bg-bg-surface border border-[rgba(255,255,255,0.10)] rounded-lg p-6 text-center shadow-lg">
+                    <div className="text-lg font-display font-bold text-text-primary mb-2">
+                      No DAG data available
                     </div>
-                    <div className="text-xs text-text-muted">
-                      This view renders table nodes returned by the backend. Your pipeline currently has
-                      0 tables in the response, so there are no nodes/edges to draw.
+                    <div className="text-sm text-text-muted">
+                      Databricks returned a pipeline, but it did not include table dependency data.
+                      The DLT page currently displays the available pipeline status and lets you start/stop runs.
                     </div>
                   </div>
                 </div>

@@ -57,6 +57,8 @@ export interface Alert {
   resource: string;
   timestamp: string;
   acknowledged: boolean;
+  logs?: string;
+  type?: string;
 }
 
 export interface DBTModel {
