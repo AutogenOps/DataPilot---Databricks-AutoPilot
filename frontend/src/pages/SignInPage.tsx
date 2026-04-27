@@ -143,7 +143,7 @@ export default function SignInPage() {
             <p className="mt-3 text-sm leading-6 text-text-secondary">
               {isSupabaseConfigured
                 ? 'Use your Supabase account to access the dashboard.'
-                : 'Local auth is enabled because Supabase is not configured. Use the demo shortcut or any valid email and 6+ character password.'}
+                : 'Use your Supabase account to access the dashboard. If you are the administrator, please set up Supabase and configure environment variables to enable authentication features.'}
             </p>
           </div>
 
